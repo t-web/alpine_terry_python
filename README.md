@@ -1,1 +1,0 @@
-# alpine_terry_python
