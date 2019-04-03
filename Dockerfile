@@ -20,9 +20,9 @@ RUN apk add --no-cache python3 && \
 ADD . /myapp
 WORKDIR /myapp
 #安装依赖
-RUN pip-3.3 install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
-RUN pip-3.3 install .
+RUN pip3 install .
 
 #EXPOSE 8000
 #CMD myapp --port 8000
