@@ -4,7 +4,7 @@ RUN echo "#aliyun" > /etc/apk/repositories
 RUN echo "https://mirrors.aliyun.com/alpine/v3.9/main/" >> /etc/apk/repositories
 RUN echo "https://mirrors.aliyun.com/alpine/v3.9/community/" >> /etc/apk/repositories
 RUN apk update
-RUN apk add bash vim
+RUN apk add bash vim git
 
 #安装python3 和pip
 RUN apk add --no-cache python3 && \
@@ -15,9 +15,10 @@ RUN apk add --no-cache python3 && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     pip3 install pipreqs && \
     rm -r /root/.cache
+RUN git clone https://github.com/t-web/alpine_terry_python.git
 
 #复制到工作目录
-ADD . /myapp
+ADD ./alpine_terry_python /myapp
 WORKDIR /myapp
 #安装依赖
 RUN pip3 install -r requirements.txt
